@@ -1,1 +1,221 @@
-wellocome!!!
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Chatstack：搭建中文NLU的全流程用户交互系统</title>
+  <meta name="description" content="">
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic|Source+Sans+Pro:400,700,200,300|Josefin+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://crownpku.com/2019/08/16/Chatstack-%E6%90%AD%E5%BB%BA%E4%B8%AD%E6%96%87NLU%E7%9A%84%E5%85%A8%E6%B5%81%E7%A8%8B%E7%94%A8%E6%88%B7%E4%BA%A4%E4%BA%92%E7%B3%BB%E7%BB%9F.html">
+  <link rel="alternate" type="application/rss+xml" title="羊肉泡馍与糖蒜" href="http://crownpku.com/feed.xml">
+
+  
+</head>
+
+  <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Chatstack：搭建中文NLU的全流程用户交互系统 | 羊肉泡馍与糖蒜</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Chatstack：搭建中文NLU的全流程用户交互系统" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="I train myself to train machines." />
+<meta property="og:description" content="I train myself to train machines." />
+<link rel="canonical" href="http://crownpku.com/2019/08/16/Chatstack-%E6%90%AD%E5%BB%BA%E4%B8%AD%E6%96%87NLU%E7%9A%84%E5%85%A8%E6%B5%81%E7%A8%8B%E7%94%A8%E6%88%B7%E4%BA%A4%E4%BA%92%E7%B3%BB%E7%BB%9F.html" />
+<meta property="og:url" content="http://crownpku.com/2019/08/16/Chatstack-%E6%90%AD%E5%BB%BA%E4%B8%AD%E6%96%87NLU%E7%9A%84%E5%85%A8%E6%B5%81%E7%A8%8B%E7%94%A8%E6%88%B7%E4%BA%A4%E4%BA%92%E7%B3%BB%E7%BB%9F.html" />
+<meta property="og:site_name" content="羊肉泡馍与糖蒜" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-08-16T00:00:00+00:00" />
+ <body>
+
+    
+<div class="wrapper">
+  <center> <a href="/index.html"><div class="site-title">   羊肉泡馍与糖蒜 </div></a></center>
+</div>
+<div class="wrapper site-description">
+<center>  I train myself to train machines. </center>
+</div>
+<div class="wrapper">
+  <div class="trigger site-navigation">
+    <a class="page-link" href="http://crownpku.com">BLOGS</a><span class="exclamationMark">/</span>
+<!--
+    
+    
+
+    <a class="page-link" href="/about/">About</a><span class="exclamationMark">/</span>
+    
+    
+    
+    
+    
+    
+    
+
+    <a class="page-link" href="/projects/">Projects</a><span class="exclamationMark">/</span>
+    
+    
+    
+    
+    
+    
+    
+
+    <a class="page-link" href="/talks/">Talks</a><span class="exclamationMark">/</span>
+    
+    
+    
+    
+-->
+      <a class="page-link" href="http://www.crownpku.com/projects/">PROJECTS</a><span class="exclamationMark">/</span>
+      <a class="page-link" href="http://www.crownpku.com/talks/">TALKS</a><span class="exclamationMark">/</span>
+      <a class="page-link" href="http://www.crownpku.com/about/">ABOUT</a><span class="exclamationMark">/</span>
+      <a class="page-link" href="http://chatstack.ai">Chatstack</a><span class="exclamationMark"></span>
+      
+  </div>
+</div>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+	
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline"><a class="post-title-link"  href="/2019/08/16/Chatstack-%E6%90%AD%E5%BB%BA%E4%B8%AD%E6%96%87NLU%E7%9A%84%E5%85%A8%E6%B5%81%E7%A8%8B%E7%94%A8%E6%88%B7%E4%BA%A4%E4%BA%92%E7%B3%BB%E7%BB%9F.html">Chatstack：搭建中文NLU的全流程用户交互系统</a></h1>
+  <center>  <p class="post-meta"><time datetime="2019-08-16T00:00:00+00:00" itemprop="datePublished">Aug 16, 2019</time></p>
+    
+   </center>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p><img src="/images/201908/login.png" alt="" /></p>
+
+<p>Chatstack is a full pipeline UI for building Chinese NLU system.</p>
+
+<p>With Chatstack, developers don’t need to write any code to be able to build customized Chinese NLU modules including defining intents and entities, labelling training data, training NLU model, managing models, testing and deploying NLU module APIs.</p>
+
+<p>The backend of Chatstack is specially designed for Chinese language with many optimizations on machine learning algorithms. The accuracy of intent and entity recognition is good with strong generalization capabilities even with small amount of training data.</p>
+
+<p>Chatstack also has the industrial level user management capability. Administrator can set up access rights for different user roles on training NLU models, modifying intents and entities, changing NLU version settings and modifying training data.</p>
+
+<p>Our demo server is hosted on Google cloud platform and we thank Google for their support on GCP credits.</p>
+
+<p>Chatstack是一个搭建中文NLU的全流程用户交互系统。</p>
+
+<p>有了Chatstack，用户不用写一行代码就能够搭建定制化的中文NLU模组：定义意图和实体、标注数据、训练NLU模型、管理模型、测试和部署NLU模组。</p>
+
+<p>Chatstack后端特别为中文语言进行大量的机器学习算法优化，意图和实体识别准确率高、拓展性强，对训练数据的数量也没有太高的要求。</p>
+
+<p>Chatstack同时拥有企业级的用户管理权限，管理员可以自主为其他用户添加或删除训练NLU、修改意图及实体设置、调整NLU版本设置及修改训练数据的不同权限。</p>
+
+<h3 id="意图管理">意图管理</h3>
+
+<p><img src="/images/201908/intent.png" alt="" /></p>
+
+<h3 id="实体管理">实体管理</h3>
+
+<p><img src="/images/201908/entity.png" alt="" /></p>
+
+<h3 id="数据标注">数据标注</h3>
+
+<p><img src="/images/201908/label.png" alt="" /></p>
+
+<h3 id="nlu模型管理">NLU模型管理</h3>
+
+<p><img src="/images/201908/model.png" alt="" /></p>
+
+<h3 id="账号管理">账号管理</h3>
+
+<p><img src="/images/201908/account.png" alt="" /></p>
+
+<h3 id="部署nlu模型">部署NLU模型</h3>
+
+<p>在UI中选择生产环境之后，可以通过下面的https API调用生产模型：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -XPOST https://chatstack.crownpku.com:9091/model/parse?token=xxx -d '{"text":"我想请下个月3号到6号的假"}' | python -mjson.tool
+</code></pre></div></div>
+
+<p>我们设置了API token来防止恶意调取API。如有兴趣测试生产模型的API集成或加入微信讨论群，请联系“<strong>Chatstack小助手</strong>”微信号：<strong>chatstack_cn</strong></p>
+
+<h3 id="demo">Demo</h3>
+
+<p>我们已经部署和开放了第一个alpha版本做为公测的demo系统，给感兴趣的朋友免费试用。Demo在<a href="http://chatstack.crownpku.com">chatstack.crownpku.com</a></p>
+
+<p>关注微信公众号“<strong>王尔古</strong>”，回复”<strong>chatstack</strong>“获取公测用户名和密码。</p>
+
+<p>感谢谷歌云赞助GCP credit supported activity.</p>
+
+<h3 id="文档">文档</h3>
+
+<p>文档在<a href="https://github.com/crownpku/Chatstack-Doc">https://github.com/crownpku/Chatstack-Doc</a></p>
+
+<p>欢迎在上述github文档的Issues中提bug或建议新功能。</p>
+
+
+  </div>
+
+</article>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'crownpku'; // required: replace example with your forum shortname
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading small-site-title">羊肉泡馍与糖蒜</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list footer-content">
+          <li>Powered By <a href="http://github.com/hemangsk/Gravity">Gravity</a></li>
+          <li>Made with <i class="fa fa-heart"></i> on <a href="http://jekyllrb.com"><span style="color:black">{ { Jekyll } }</a></span></li>
+
+
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2 footer-content">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/crownpku"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">crownpku</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3 site-description">
+        <p>I train myself to train machines.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
