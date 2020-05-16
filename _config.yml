@@ -1,3 +1,15 @@
 theme: jekyll-theme-slate
 title:            "自然语言处理｜深度学习｜产品设计和开发"
 description:      "欢迎来到漫谈时间，风起云落，午夜时光。"
+
+url: "http://ylh.github.io"
+github_username:  icetimes
+
+markdown: kramdown
+permalink: pretty
+
+highlighter: rouge
+kramdown:
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
